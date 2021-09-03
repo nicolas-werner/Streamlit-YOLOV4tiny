@@ -1,3 +1,3 @@
 # Streamlit-YOLOV4tiny
 ### Demo
-![Demo Video](videoDemo.mov)
+<a href="{videoDemo.mov}" title="Demo Video"></a>
