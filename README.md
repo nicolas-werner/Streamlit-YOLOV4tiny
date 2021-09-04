@@ -1,6 +1,6 @@
 # Streamlit-YOLOV4tiny
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/https://share.streamlit.io/nicolas-werner/streamlit-yolov4tiny/main/main.py)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/nicolas-werner/streamlit-yolov4tiny/main/main.py)
 ### Demo
 
 
