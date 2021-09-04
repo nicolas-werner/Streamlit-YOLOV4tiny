@@ -84,7 +84,7 @@ def main():
         bild2=Image.open('loss.png')
         bild3=Image.open('testset.png')
         bildlist = [bild2, bild3]
-        caption_list=["Mean Average Precision und Loss", " Statuenerkennung: Beispiel aus dem Testset"]
+        caption_list=["Mean Average Precision und Loss", " Statuenerkennung: Beispiel aus dem Test-Set"]
         st.image(bildlist, caption=caption_list, width=300)
         st.subheader('Demo')
         st.markdown('Das Modell kann auch die Statuen auf Bildern auf dem Smartphone erkennen')
@@ -92,6 +92,11 @@ def main():
         video = open('videoDemo.mov', 'rb')
         video_file = video.read()
         st.video(video_file)
+        bild99=Image.open('testset2.png')
+        st.image(bild99, caption='weitere Bilder aus dem Test-Set')
+        bild91=Image.open('real.png')
+        st.image(bild91, caption='Erkennen von Statuen in der Realität')
+       
 
         #https://colab.research.google.com/drive/1IvQiI_iVTBGzdsJAjLgkP0xMWdjnpAVp?usp=sharing
     # COCO hinzufügen?
@@ -111,8 +116,8 @@ def main():
     
 
 # Threshold für OpenCV
-Conf_threshold = 0.4
-NMS_threshold = 0.4
+Conf_threshold = 0.80
+NMS_threshold = 0.2
 
 # Colours
 COLORS = [(0, 255, 0), (0, 0, 255), (255, 0, 0),
@@ -159,7 +164,7 @@ def object_detection():
 
                 cv2.rectangle(image, box, color, 1)
                 cv2.putText(image, label, (box[0], box[1]-10),
-                            cv2.FONT_HERSHEY_COMPLEX, 0.5, color, 1)
+                            cv2.FONT_PAPYRUS, 0.5, color, 1)
 
             return av.VideoFrame.from_ndarray(image, format="bgr24")
 
