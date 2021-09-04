@@ -164,7 +164,7 @@ def object_detection():
 
                 cv2.rectangle(image, box, color, 1)
                 cv2.putText(image, label, (box[0], box[1]-10),
-                            cv2.FONT_PAPYRUS, 0.5, color, 1)
+                            cv2.FONT_HERSHEY_COMPLEX, 0.5, color, 1)
 
             return av.VideoFrame.from_ndarray(image, format="bgr24")
 
