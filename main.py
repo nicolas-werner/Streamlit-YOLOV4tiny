@@ -89,6 +89,9 @@ def main():
         st.subheader('Demo')
         st.markdown('Das Modell kann auch die Statuen auf Bildern auf dem Smartphone erkennen')
         # Das Modell kann nicht nur die Statuen in freier Wildbahn erkennen, sondern auch auf Bildern
+        video1 = open('demo_mobil.mov', 'rb')
+        video_file1 = video1.read()
+        st.video(video_file1)
         video = open('videoDemo.mov', 'rb')
         video_file = video.read()
         st.video(video_file)
