@@ -1,4 +1,5 @@
 import asyncio
+import base64
 import logging
 import queue
 import threading
@@ -77,15 +78,19 @@ def main():
         st.subheader("Trainieren eines YOLOV4-tiny Modells")
         st.markdown("#### Das Datenset")
         st.markdown('Mithilfe der Photogrammetry-App [Trnio](https://www.trnio.com/) haben wir einige Statuen und Denkmäler in Köln eingescannt und mit dem Unity Package [Perception](https://github.com/Unity-Technologies/com.unity.perception) ein synthetisches Datenset erzeugt. Dazu wurden die Statuen vor einen Hintergrund platziert, wobei nach jedem Frame sich der Hintergrund, Lichtintensivität sowie der Rotationswinkel der einzelnen Statuen auf der Z-Achse verändert hat, sodass das Modell lernt, die Statuen in möglichst vielen Situationen zu erkennen.  Insgesamt bestand unser Datenset aus 16000 annotierten Einzelbildern, wobei sich die die Annotation pro Statue auf etwa 9000 belief.')
+        bilduni=Image.open('unity1.png')
+        st.image(bilduni, caption="Erzeugen eines synthetischen Datensets mit dem Unity Package Perception")
+        
+        st.text('')
         bild=Image.open('datenset.png')
-        st.image(bild, caption="Größe des synthetischen Datensets")
+        st.image(bild, caption="Größe des synthetischen Datensets", width=700)
         st.markdown("#### Transfer Learning mit Google Colab und Darknet")
         st.markdown("Das Modell wurde mit dem Framework [Darknet](https://pjreddie.com/darknet/) und mit einem bereits trainierten auf der Plattform Google Colab per Transfer Learning trainert. Das Notebook kann [hier](https://colab.research.google.com/drive/1IvQiI_iVTBGzdsJAjLgkP0xMWdjnpAVp?usp=sharing) eingesehen werden.")
         bild2=Image.open('loss.png')
         bild3=Image.open('testset.png')
         bildlist = [bild2, bild3]
         caption_list=["Mean Average Precision und Loss", " Statuenerkennung: Beispiel aus dem Test-Set"]
-        st.image(bildlist, caption=caption_list, width=300)
+        st.image(bildlist, caption=caption_list, width=349)
         st.subheader('Demo')
         # Das Modell kann nicht nur die Statuen in freier Wildbahn erkennen, sondern auch auf Bildern
         video1 = open('video.mov', 'rb')
