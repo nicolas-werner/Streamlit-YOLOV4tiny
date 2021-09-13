@@ -86,7 +86,7 @@ def main():
 		bild=Image.open('Bilder/datenset.png')
 		st.image(bild, caption="Größe des synthetischen Datensets", width=700)
 		st.markdown("#### Transfer Learning mit Google Colab und Darknet")
-		st.markdown("Das Modell wurde mit dem Framework [Darknet](https://pjreddie.com/darknet/) und mit einem bereits trainierten auf der Plattform Google Colab per Transfer Learning trainert. Das Notebook kann [hier](https://colab.research.google.com/drive/1IvQiI_iVTBGzdsJAjLgkP0xMWdjnpAVp?usp=sharing) eingesehen werden.")
+		st.markdown("Das Modell wurde mit dem Framework [Darknet](https://pjreddie.com/darknet/) und mit einem bereits vortrainierten Objekterkennungsmodell auf der Plattform Google Colab per Transfer Learning trainert. Das Notebook kann [hier](https://colab.research.google.com/drive/1IvQiI_iVTBGzdsJAjLgkP0xMWdjnpAVp?usp=sharing) eingesehen werden.")
 		bild2=Image.open('Bilder/loss.png')
 		bild3=Image.open('Bilder/testset.png')
 		bildlist = [bild2, bild3]
