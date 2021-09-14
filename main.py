@@ -192,6 +192,7 @@ def object_detection():
 def image_detection():
 	newimg = st.file_uploader ("Choose an image to upload")
 	if newimg is not None:
+		label = "There is no statue from our Database in this picture! :("
 		dim = (416, 416)
 		file_bytes = np.asarray(bytearray(newimg.read()), dtype=np.uint8)
 		uploadedimg = cv2.imdecode(file_bytes, 1)
