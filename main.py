@@ -194,13 +194,13 @@ def image_detection():
 	if uploadedimg is not None:
 		dim = (416, 416)
 		uploadedimg = cv2.resize(uploadedimg, dim)
+		classes, scores, boxes = model.detect(uploadedimg, Conf_threshold, NMS_threshold)
 		for (classid, score, box) in zip(classes, scores, boxes):
 			color = COLORS[int(classid) % len(COLORS)]
-    		label = "%s : %f" % (class_name[classid[0]], score)
-    		cv2.rectangle(uploadedimg, box, color, 1)
-    		cv2.putText(uploadedimg, label, (box[0], box[1]-10),
-    		cv2.FONT_HERSHEY_COMPLEX, 0.5, color, 1)
-	st.image(uploadedimg, caption = label)
+			label = "%s : %f" % (class_name[classid[0]], score)
+			cv2.rectangle(uploadedimg, box, color, 1)
+			cv2.putText(uploadedimg, label, (box[0], box[1]-10), cv2.FONT_HERSHEY_COMPLEX, 0.5, color, 1)
+		st.image(uploadedimg, caption = label)
 
 
 if __name__ == "__main__":
