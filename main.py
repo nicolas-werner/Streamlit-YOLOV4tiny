@@ -186,24 +186,26 @@ def object_detection():
 	)
 
 
-# Bild hochladen
+# Bilder hochladen
 
 
 def image_detection():
-	newimg = st.file_uploader ("Choose an image to upload")
-	if newimg is not None:
-		label = "There is no statue from our Database in this picture! :("
-		dim = (416, 416)
-		file_bytes = np.asarray(bytearray(newimg.read()), dtype=np.uint8)
-		uploadedimg = cv2.imdecode(file_bytes, 1)
-		classes, scores, boxes = model.detect(uploadedimg, Conf_threshold, NMS_threshold)
-		for (classid, score, box) in zip(classes, scores, boxes):
-			color = COLORS[int(classid) % len(COLORS)]
-			label = "%s : %f" % (class_name[classid[0]], score)
-			cv2.rectangle(uploadedimg, box, color, 1)
-			cv2.putText(uploadedimg, label, (box[0], box[1]-10), cv2.FONT_HERSHEY_COMPLEX, 0.5, color, 1)
-		uploadedimg = cv2.cvtColor(uploadedimg, cv2.COLOR_BGR2RGB)
-		st.image(uploadedimg, caption = label)
+	newimgs = st.file_uploader ("Choose images to upload", accept_multiple_files=True)
+	if newimgs is not None:
+		for newimg in newimgs:
+			label = "There is no statue from our Database in this picture! :("
+			dim = (416, 416)
+			file_bytes = np.asarray(bytearray(newimg.read()), dtype=np.uint8)
+			uploadedimg = cv2.imdecode(file_bytes, 1)
+			classes, scores, boxes = model.detect(uploadedimg, Conf_threshold, NMS_threshold)
+			for (classid, score, box) in zip(classes, scores, boxes):
+				color = COLORS[int(classid) % len(COLORS)]
+				label = "%s : %f" % (class_name[classid[0]], score)
+				cv2.rectangle(uploadedimg, box, color, 1)
+				cv2.putText(uploadedimg, label, (box[0], box[1]-10), cv2.FONT_HERSHEY_COMPLEX, 0.5, color, 1)
+			
+			uploadedimg = cv2.cvtColor(uploadedimg, cv2.COLOR_BGR2RGB)
+			st.image(uploadedimg, caption = label)
 
 
 if __name__ == "__main__":
