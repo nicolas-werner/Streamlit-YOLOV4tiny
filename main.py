@@ -103,7 +103,7 @@ def main():
 		st.video(video_file)
 		bild99=Image.open('Bilder/testset2.png')
 		st.image(bild99, caption='weitere Bilder aus dem Test-Set')
-		bild91=Image.open('Bilder/real.png')
+		bild91=Image.open('DemoBilder/ergebnis/reali.png')
 		st.image(bild91, caption='Erkennen von Statuen in der Realität')
 	   
 
@@ -155,7 +155,7 @@ net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 model = cv2.dnn_DetectionModel(net)
 model.setInputParams(size=(416, 416), scale=1/255, swapRB=True)
 
-# quelle https://github.com/whitphx/streamlit-webrtc und https://github.com/rahularepaka/ObjectDetectionYolov4Web
+# quelle https://github.com/whitphx/streamlit-webrtc
 def object_detection():
 
 	class Video(VideoProcessorBase):
